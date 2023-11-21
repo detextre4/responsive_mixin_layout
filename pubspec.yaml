@@ -1,7 +1,7 @@
 name: flutter_responsive_layout
 description: A Flutter package for creating responsive layouts across different screen sizes.
 version: 1.0.0
-homepage:
+homepage: https://github.com/detextre4/flutter_responsive_layout
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
