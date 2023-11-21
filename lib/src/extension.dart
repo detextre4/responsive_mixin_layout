@@ -1,25 +1,24 @@
 import 'package:flutter/widgets.dart';
 import 'package:responsive_mixin_layout/src/screen_size.dart';
 
-ScreenSize _screenSize(BuildContext context) {
-  final screenSize = context.findAncestorWidgetOfExactType<ScreenSize>();
-  if (screenSize == null) {
-    throw 'ResponsiveLayout must have an ancestor of type ScreenSize';
+ScreenSizes _screenSizes(BuildContext context) {
+  final screenSizes = context.findAncestorWidgetOfExactType<ScreenSizes>();
+  if (screenSizes == null) {
+    throw 'ResponsiveLayout must have an ancestor of type ScreenSizes';
   }
 
-  return screenSize;
+  return screenSizes;
 }
 
-extension ScreenSizeExtension on BuildContext {
+extension ScreenSizesExtension on BuildContext {
   bool get isMobile =>
-      MediaQuery.of(this).size.width < _screenSize(this).mobile;
+      MediaQuery.of(this).size.width < _screenSizes(this).mobile;
 
-  bool isTablet(BuildContext context) =>
-      MediaQuery.of(context).size.width < _screenSize(this).tablet;
+  bool get isTablet =>
+      MediaQuery.of(this).size.width < _screenSizes(this).tablet;
 
-  bool isDesktop(BuildContext context) =>
-      MediaQuery.of(context).size.width < _screenSize(this).desktop;
+  bool get isDesktop =>
+      MediaQuery.of(this).size.width < _screenSizes(this).desktop;
 
-  bool isTV(BuildContext context) =>
-      MediaQuery.of(context).size.width < _screenSize(this).tv;
+  bool get isTV => MediaQuery.of(this).size.width < _screenSizes(this).tv;
 }

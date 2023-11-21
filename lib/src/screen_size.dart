@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 // * Responsive sizes
 /// A list of sizes from device screen resolution
-class ScreenSize extends StatelessWidget {
-  const ScreenSize({
+class ScreenSizes extends StatelessWidget {
+  const ScreenSizes({
     super.key,
     required this.child,
     this.mobile = 600,
