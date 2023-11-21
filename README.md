@@ -18,7 +18,7 @@ Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies: 
-  responsive_mixin_layout: ^1.0.0
+  responsive_mixin_layout: ^1.0.2
 ```
 
 Then, run the command  flutter pub get  to get the dependencies. 
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget with ResponsiveLayoutMixin {
 }
 ```
 
-tambien puedes hacer uso del `ResponsiveLayout`
+You can also use the `ResponsiveLayout`
 
 ```dart
 import 'package:flutter/material.dart'; 
