@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=C:\Users\usuario\Development kits\flutter-sdk"
-export "FLUTTER_APPLICATION_PATH=C:\Users\usuario\Repositorios\flutter packages\flutter_responsive_layout"
+export "FLUTTER_APPLICATION_PATH=C:\Users\usuario\Repositorios\flutter packages\responsive_mixin_layout"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=0.0.1"

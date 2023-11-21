@@ -1,35 +1,60 @@
-# Flutter Responsive Layout
+# Responsive Mixin Layout
 
-El paquete Flutter Responsive Layout proporciona una forma sencilla de crear diseños responsivos en Flutter que se adaptan a diferentes tamaños de pantalla. Permite personalizar la apariencia de tus aplicaciones Flutter en dispositivos móviles, tabletas, escritorios y televisores.
+The Flutter Responsive Layout package provides an easy way to create responsive layouts in Flutter that adapt to different screen sizes. It allows you to customize the appearance of your Flutter applications on mobile devices, tablets, desktops, and TVs. 
+ 
+## Features
 
-## Características
+- Adapt your application's content based on the device's screen size. 
+- Provides custom widgets for mobile devices, tablets, desktops, and TVs. 
+- Easy to use and integrate into your existing Flutter application. 
+ 
+## Getting Started
 
-- Adapta el contenido de tu aplicación en función del tamaño de la pantalla del dispositivo.
-- Proporciona widgets personalizados para dispositivos móviles, tabletas, escritorios y televisores.
-- Fácil de usar y de integrar en tu aplicación Flutter existente.
+Make sure you have Flutter installed on your machine. For more information on how to install Flutter, please refer to the [official Flutter documentation](https://flutter.dev/docs/get-started/install).
 
-## Comenzando
+## Installation 
 
-Asegúrate de tener Flutter instalado en tu máquina. Para obtener más información sobre cómo instalar Flutter, consulta la [documentación oficial de Flutter](https://flutter.dev/docs/get-started/install).
-
-## Instalación
-
-Agrega la siguiente dependencia a tu archivo `pubspec.yaml`:
+Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies: 
-  flutter_responsive_layout: ^1.0.0
+  responsive_mixin_layout: ^1.0.0
 ```
 
-Luego, ejecuta el comando `flutter pub get` para obtener las dependencias.
+Then, run the command  flutter pub get  to get the dependencies. 
+ 
+## Usage 
+Here is a basic example of how to use the Flutter Responsive Mixin Layout package:
 
-## Uso
+```dart
+class HomePage extends StatelessWidget with ResponsiveLayoutMixin {
+  const HomePage({super.key});
 
-A continuación, se muestra un ejemplo básico de cómo utilizar el paquete Flutter Responsive Layout:
+  @override
+  Widget? desktopLayout(BuildContext context, BoxConstraints constraints) {
+    return const Scaffold(
+      body: _Page1(),
+    );
+  }
+
+  @override
+  Widget tabletLayout(BuildContext context, BoxConstraints constraints) {
+    return Scaffold(
+      body: PageView(
+        children: const [
+          _Page1(),
+        ],
+      ),
+    );
+  }
+}
+```
+
+tambien puedes hacer uso del `ResponsiveLayout`
 
 ```dart
 import 'package:flutter/material.dart'; 
-import 'package:flutter_responsive_layout/flutter_responsive_layout.dart'; 
+import 'package:responsive_mixin_layout/responsive_mixin_layout.dart'; 
  
 void main() { 
   runApp(MyApp()); 
@@ -72,10 +97,10 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-## Contribución
+## Contribution
 
-Las contribuciones son bienvenidas. Si encuentras algún problema o tienes alguna sugerencia de mejora, puedes abrir un [issue](https://github.com/tu_usuario/tu_paquete/issues) o enviar un [pull request](https://github.com/tu_usuario/tu_paquete/pulls) en el repositorio de GitHub.
+Contributions are welcome. If you find any issues or have any suggestions for improvement, you can open an [issue](https://github.com/your_username/your_package/issues) or submit a [pull request](https://github.com/your_username/your_package/pulls) on the GitHub repository. 
+ 
+## Support
 
-## Soporte
-
-Si tienes alguna pregunta o necesitas ayuda adicional, puedes contactar al equipo de desarrollo en [detextre4@gmail.com](mailto:detextre4@gmail.com).
+If you have any questions or need additional help, you can contact the development team at [detextre4@gmail.com](mailto:detextre4@gmail.com).

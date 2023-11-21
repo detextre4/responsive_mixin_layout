@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:flutter_responsive_layout/flutter_responsive_layout.dart';
+import 'package:responsive_mixin_layout/flutter_responsive_layout.dart';
 
 void main() {
   testWidgets('Mobile layout should display correctly',

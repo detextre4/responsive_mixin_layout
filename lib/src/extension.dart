@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_responsive_layout/src/screen_size.dart';
+import 'package:responsive_mixin_layout/src/screen_size.dart';
 
 ScreenSize _screenSize(BuildContext context) {
   final screenSize = context.findAncestorWidgetOfExactType<ScreenSize>();
