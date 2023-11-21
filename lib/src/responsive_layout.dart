@@ -51,7 +51,7 @@ class ResponsiveLayout extends StatelessWidget {
 }
 
 /// Custom responsive layout mixin
-mixin ResponsiveLayoutMixin<T extends Widget> on Widget {
+mixin ResponsiveMixinLayout<T extends Widget> on Widget {
   Widget? mobileLayout(BuildContext context, BoxConstraints constraints) =>
       null;
   Widget? tabletLayout(BuildContext context, BoxConstraints constraints) =>
@@ -84,7 +84,7 @@ mixin ResponsiveLayoutMixin<T extends Widget> on Widget {
 }
 
 /// Custom responsive layout mixin to `StatefullWidget`
-mixin ResponsiveLayoutMixinStateful<T extends StatefulWidget> on State<T> {
+mixin ResponsiveMixinLayoutStateful<T extends StatefulWidget> on State<T> {
   Widget? mobileLayout(BuildContext context, BoxConstraints constraints) =>
       null;
   Widget? tabletLayout(BuildContext context, BoxConstraints constraints) =>

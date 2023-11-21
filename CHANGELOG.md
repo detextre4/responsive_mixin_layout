@@ -9,3 +9,7 @@
 
 * changed `ScreenSize` class name to `ScreenSizes`
 * updated extension on context to have getters
+
+## 1.0.1
+
+* changed `ResponsiveLayoutMixin` mixin name to `ResponsiveMixinLayout`
