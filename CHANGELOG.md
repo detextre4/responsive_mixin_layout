@@ -13,3 +13,8 @@
 ## 1.0.2
 
 * changed `ResponsiveLayoutMixin` mixin name to `ResponsiveMixinLayout`
+
+## 1.0.3
+
+* updated flutter sdk
+* updated readme

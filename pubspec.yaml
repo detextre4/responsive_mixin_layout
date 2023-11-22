@@ -1,6 +1,6 @@
 name: responsive_mixin_layout
 description: A Flutter package for creating responsive layouts across different screen sizes.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/detextre4/responsive_mixin_layout
 
 environment:
