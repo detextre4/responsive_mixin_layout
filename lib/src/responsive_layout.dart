@@ -33,14 +33,15 @@ class ResponsiveLayout extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (mobile != null && constraints.maxWidth < screenSizes.mobile) {
+        if (mobile != null && constraints.maxWidth < screenSizes.width.mobile) {
           return mobile!(context, constraints) ?? const Placeholder();
-        } else if (tablet != null && constraints.maxWidth < screenSizes.tablet) {
+        } else if (tablet != null &&
+            constraints.maxWidth < screenSizes.width.tablet) {
           return tablet!(context, constraints) ?? const Placeholder();
         } else if (desktop != null &&
-            constraints.maxWidth < screenSizes.desktop) {
+            constraints.maxWidth < screenSizes.width.desktop) {
           return desktop!(context, constraints) ?? const Placeholder();
-        } else if (tv != null && constraints.maxWidth < screenSizes.tv) {
+        } else if (tv != null && constraints.maxWidth < screenSizes.width.tv) {
           return desktop!(context, constraints) ?? const Placeholder();
         }
 
@@ -66,13 +67,13 @@ mixin ResponsiveMixinLayout<T extends Widget> on Widget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (mobileLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.mobile) {
+            constraints.maxWidth < screenSizes.width.mobile) {
           return mobileLayout(context, constraints) ?? const Placeholder();
         } else if (tabletLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.tablet) {
+            constraints.maxWidth < screenSizes.width.tablet) {
           return tabletLayout(context, constraints) ?? const Placeholder();
         } else if (desktopLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.desktop) {
+            constraints.maxWidth < screenSizes.width.desktop) {
           return desktopLayout(context, constraints) ?? const Placeholder();
         }
         return tvLayout(context, constraints) ?? const Placeholder();
@@ -99,13 +100,13 @@ mixin ResponsiveMixinLayoutStateful<T extends StatefulWidget> on State<T> {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (mobileLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.mobile) {
+            constraints.maxWidth < screenSizes.width.mobile) {
           return mobileLayout(context, constraints) ?? const Placeholder();
         } else if (tabletLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.tablet) {
+            constraints.maxWidth < screenSizes.width.tablet) {
           return tabletLayout(context, constraints) ?? const Placeholder();
         } else if (desktopLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.desktop) {
+            constraints.maxWidth < screenSizes.width.desktop) {
           return desktopLayout(context, constraints) ?? const Placeholder();
         }
         return tvLayout(context, constraints) ?? const Placeholder();

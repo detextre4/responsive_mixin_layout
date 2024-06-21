@@ -11,14 +11,7 @@ ScreenSizes _screenSizes(BuildContext context) {
 }
 
 extension ScreenSizesExtension on BuildContext {
-  bool get isMobile =>
-      MediaQuery.of(this).size.width < _screenSizes(this).mobile;
+  ScreenWidth get width => _screenSizes(this).width.copyWith(context: this);
 
-  bool get isTablet =>
-      MediaQuery.of(this).size.width < _screenSizes(this).tablet;
-
-  bool get isDesktop =>
-      MediaQuery.of(this).size.width < _screenSizes(this).desktop;
-
-  bool get isTV => MediaQuery.of(this).size.width < _screenSizes(this).tv;
+  ScreenHeight get height => _screenSizes(this).height.copyWith(context: this);
 }
