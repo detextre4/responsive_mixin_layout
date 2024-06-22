@@ -19,6 +19,6 @@
 * updated flutter sdk
 * updated readme
 
-## 1.0.4
+## 1.1.0
 
 * added [ScreenWidth] and [ScreenHeight] classes to record sizes and methods
