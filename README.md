@@ -22,8 +22,20 @@ dependencies:
 ```
 
 Then, run the command  flutter pub get  to get the dependencies. 
+
+## Setup
+Wrap your materialApp with [ScreenSizes] widget, you can configure globally screen width and height values in this widget
+```dart
+ScreenSizes(
+  child: MaterialApp(
+    theme: ThemeApp.of(context),
+    navigatorKey: navigatorKey,
+    debugShowCheckedModeBanner: false,
+  ),
+)
+```
  
-## Usage 
+## Usage
 Here is a basic example of how to use the Flutter Responsive Mixin Layout package:
 
 ```dart
