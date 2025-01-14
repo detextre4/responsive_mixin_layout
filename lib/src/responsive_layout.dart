@@ -16,6 +16,7 @@ class ResponsiveLayout extends StatelessWidget {
     super.key,
     this.mobile,
     this.tablet,
+    this.xdesktop,
     this.desktop,
     this.tv,
     this.basedOnLayout = false,
@@ -24,6 +25,8 @@ class ResponsiveLayout extends StatelessWidget {
       mobile;
   final Widget? Function(BuildContext context, BoxConstraints constraints)?
       tablet;
+  final Widget? Function(BuildContext context, BoxConstraints constraints)?
+      xdesktop;
   final Widget? Function(BuildContext context, BoxConstraints constraints)?
       desktop;
   final Widget? Function(BuildContext context, BoxConstraints constraints)? tv;
@@ -45,6 +48,8 @@ class ResponsiveLayout extends StatelessWidget {
           return mobile!(context, constraints) ?? const Placeholder();
         } else if (tablet != null && width < screenSizes.width.tablet) {
           return tablet!(context, constraints) ?? const Placeholder();
+        } else if (xdesktop != null && width < screenSizes.width.xdesktop) {
+          return xdesktop!(context, constraints) ?? const Placeholder();
         } else if (desktop != null && width < screenSizes.width.desktop) {
           return desktop!(context, constraints) ?? const Placeholder();
         } else if (tv != null && width < screenSizes.width.tv) {
@@ -63,6 +68,8 @@ mixin ResponsiveMixinLayout<T extends Widget> on Widget {
       null;
   Widget? tabletLayout(BuildContext context, BoxConstraints constraints) =>
       null;
+  Widget? xdesktopLayout(BuildContext context, BoxConstraints constraints) =>
+      null;
   Widget? desktopLayout(BuildContext context, BoxConstraints constraints) =>
       null;
   Widget? tvLayout(BuildContext context, BoxConstraints constraints) => null;
@@ -78,6 +85,9 @@ mixin ResponsiveMixinLayout<T extends Widget> on Widget {
         } else if (tabletLayout(context, constraints) != null &&
             constraints.maxWidth < screenSizes.width.tablet) {
           return tabletLayout(context, constraints) ?? const Placeholder();
+        } else if (xdesktopLayout(context, constraints) != null &&
+            constraints.maxWidth < screenSizes.width.xdesktop) {
+          return desktopLayout(context, constraints) ?? const Placeholder();
         } else if (desktopLayout(context, constraints) != null &&
             constraints.maxWidth < screenSizes.width.desktop) {
           return desktopLayout(context, constraints) ?? const Placeholder();
@@ -96,6 +106,8 @@ mixin ResponsiveMixinLayoutStateful<T extends StatefulWidget> on State<T> {
       null;
   Widget? tabletLayout(BuildContext context, BoxConstraints constraints) =>
       null;
+  Widget? xdesktopLayout(BuildContext context, BoxConstraints constraints) =>
+      null;
   Widget? desktopLayout(BuildContext context, BoxConstraints constraints) =>
       null;
   Widget? tvLayout(BuildContext context, BoxConstraints constraints) => null;
@@ -111,6 +123,9 @@ mixin ResponsiveMixinLayoutStateful<T extends StatefulWidget> on State<T> {
         } else if (tabletLayout(context, constraints) != null &&
             constraints.maxWidth < screenSizes.width.tablet) {
           return tabletLayout(context, constraints) ?? const Placeholder();
+        } else if (xdesktopLayout(context, constraints) != null &&
+            constraints.maxWidth < screenSizes.width.xdesktop) {
+          return desktopLayout(context, constraints) ?? const Placeholder();
         } else if (desktopLayout(context, constraints) != null &&
             constraints.maxWidth < screenSizes.width.desktop) {
           return desktopLayout(context, constraints) ?? const Placeholder();

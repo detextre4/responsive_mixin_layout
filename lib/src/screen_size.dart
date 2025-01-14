@@ -25,6 +25,7 @@ class ScreenWidth {
     this.xmobile = 400,
     this.mobile = 600,
     this.tablet = 880,
+    this.xdesktop = 1280,
     this.desktop = 2000,
     this.tv = 4000,
   });
@@ -44,6 +45,9 @@ class ScreenWidth {
   /// represent 880 viewport width
   final double tablet;
 
+  /// represent 1280 viewport width
+  final double xdesktop;
+
   /// represent 2000 viewport width
   final double desktop;
 
@@ -59,7 +63,10 @@ class ScreenWidth {
   /// represent range between 600 - 880 viewport width
   bool get isTablet => media.size.width <= tablet;
 
-  /// represent range between 880 - 2000 viewport width
+  /// represent range between 880 - 1280 viewport width
+  bool get isXDesktop => media.size.width <= xdesktop;
+
+  /// represent range between 1280 - 2000 viewport width
   bool get isDesktop => media.size.width <= desktop;
 
   /// represent range between 2000 - 4000 or more viewport width
@@ -70,6 +77,7 @@ class ScreenWidth {
     double? xmobile,
     double? mobile,
     double? tablet,
+    double? xdesktop,
     double? desktop,
     double? tv,
   }) =>
@@ -78,6 +86,7 @@ class ScreenWidth {
         xmobile: xmobile ?? this.xmobile,
         mobile: mobile ?? this.mobile,
         tablet: tablet ?? this.tablet,
+        xdesktop: xdesktop ?? this.xdesktop,
         desktop: desktop ?? this.desktop,
         tv: tv ?? this.tv,
       );

@@ -26,3 +26,7 @@
 ## 1.2.0
 
 * added `basedOnLayout` bool on [ResponsiveLayout] to switch between get screen size from screen size or layout box constraints
+
+## 1.3.0
+
+* added `xdesktop` field into [ScreenSizes]
