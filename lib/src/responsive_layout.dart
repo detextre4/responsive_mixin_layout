@@ -18,6 +18,7 @@ class ResponsiveLayout extends StatelessWidget {
     this.tablet,
     this.desktop,
     this.tv,
+    this.basedOnLayout = false,
   });
   final Widget? Function(BuildContext context, BoxConstraints constraints)?
       mobile;
@@ -27,21 +28,26 @@ class ResponsiveLayout extends StatelessWidget {
       desktop;
   final Widget? Function(BuildContext context, BoxConstraints constraints)? tv;
 
+  /// This bool is used to switch between get screen size from screen size or layout box constraints
+  final bool basedOnLayout;
+
   @override
   Widget build(BuildContext context) {
     final screenSizes = _screenSizes(context);
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (mobile != null && constraints.maxWidth < screenSizes.width.mobile) {
+        final width = basedOnLayout
+            ? constraints.maxWidth
+            : MediaQuery.of(context).size.width;
+
+        if (mobile != null && width < screenSizes.width.mobile) {
           return mobile!(context, constraints) ?? const Placeholder();
-        } else if (tablet != null &&
-            constraints.maxWidth < screenSizes.width.tablet) {
+        } else if (tablet != null && width < screenSizes.width.tablet) {
           return tablet!(context, constraints) ?? const Placeholder();
-        } else if (desktop != null &&
-            constraints.maxWidth < screenSizes.width.desktop) {
+        } else if (desktop != null && width < screenSizes.width.desktop) {
           return desktop!(context, constraints) ?? const Placeholder();
-        } else if (tv != null && constraints.maxWidth < screenSizes.width.tv) {
+        } else if (tv != null && width < screenSizes.width.tv) {
           return desktop!(context, constraints) ?? const Placeholder();
         }
 

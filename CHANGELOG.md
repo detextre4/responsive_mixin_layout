@@ -22,3 +22,7 @@
 ## 1.1.0
 
 * added [ScreenWidth] and [ScreenHeight] classes to record sizes and methods
+
+## 1.2.0
+
+* added `basedOnLayout` bool on [ResponsiveLayout] to switch between get screen size from screen size or layout box constraints
