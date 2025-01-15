@@ -18,7 +18,7 @@ Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies: 
-  responsive_mixin_layout: ^1.0.2
+  responsive_mixin_layout: ^1.6.0
 ```
 
 Then, run the command  flutter pub get  to get the dependencies. 
@@ -219,6 +219,53 @@ void main() {
   print('Clamped Inverted: $clampedInverted');
   print('Mapped Value: $mappedValue');
 }
+```
+
+### Random Integer Widget
+Use the RenderRandomInt widget to generate a random integer within a specified range and use it in your widget tree.
+
+### Example usage:
+
+```dart
+import 'package:random_widgets_package/random_widgets_package.dart';
+
+RenderRandomInt(
+  range: 100,
+  builder: (context, randomInt) {
+    return Text('Random Integer: $randomInt');
+  },
+);
+```
+
+### Random Double Widget
+Use the RenderRandomDouble widget to generate a random double within a specified range and use it in your widget tree.
+
+### Example usage:
+
+```dart
+import 'package:random_widgets_package/random_widgets_package.dart';
+
+RenderRandomDouble(
+  range: 100.0,
+  builder: (context, randomDouble) {
+    return Text('Random Double: $randomDouble');
+  },
+);
+```
+
+### Random Boolean Widget
+Use the RenderRandomBool widget to generate a random boolean value and use it in your widget tree.
+
+### Example usage:
+
+```dart
+import 'package:random_widgets_package/random_widgets_package.dart';
+
+RenderRandomBool(
+  builder: (context, randomBool) {
+    return Text('Random Boolean: $randomBool');
+  },
+);
 ```
 
 ## Contribution

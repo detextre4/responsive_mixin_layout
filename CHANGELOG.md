@@ -1,3 +1,7 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
 ## 1.0.0
 
 * Initial release of the package.
@@ -53,3 +57,11 @@
 ### Fixed
 
 - Minor bug fixes and performance improvements.
+
+## 1.6.0
+
+### Added
+
+- New widgets `RenderRandomInt`, `RenderRandomDouble`, and `RenderRandomBool` to generate random values.
+- Detailed comments in English for the new widgets.
+- Usage examples in the README file.
