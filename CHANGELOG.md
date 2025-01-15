@@ -69,3 +69,7 @@ All notable changes to this project will be documented in this file.
 ## 1.6.1
 
 * Updated README.
+
+## 1.6.2
+
+* Fixed [RenderRandomValue] widgets import.

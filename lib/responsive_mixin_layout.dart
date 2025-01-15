@@ -6,3 +6,4 @@ export 'src/responsive_layout.dart';
 export 'src/render_box_builder.dart';
 export 'src/size_changed_listener.dart';
 export 'src/text_scaler_builder.dart';
+export 'src/render_random_value.dart';
