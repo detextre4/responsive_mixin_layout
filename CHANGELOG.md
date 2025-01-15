@@ -65,3 +65,7 @@ All notable changes to this project will be documented in this file.
 - New widgets `RenderRandomInt`, `RenderRandomDouble`, and `RenderRandomBool` to generate random values.
 - Detailed comments in English for the new widgets.
 - Usage examples in the README file.
+
+## 1.6.1
+
+* Updated README.
