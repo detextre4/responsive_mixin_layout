@@ -3,11 +3,12 @@ import 'package:responsive_mixin_layout/src/screen_size.dart';
 
 ScreenSizes _screenSizes(BuildContext context) {
   final screenSizes = context.findAncestorWidgetOfExactType<ScreenSizes>();
-  if (screenSizes == null) {
-    throw 'ResponsiveLayout must have an ancestor of type ScreenSizes';
-  }
+  assert(
+    screenSizes != null,
+    'ResponsiveLayout must have an ancestor of type ScreenSizes',
+  );
 
-  return screenSizes;
+  return screenSizes!;
 }
 
 extension ScreenSizesExtension on BuildContext {

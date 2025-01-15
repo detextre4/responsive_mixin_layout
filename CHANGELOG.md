@@ -30,3 +30,7 @@
 ## 1.3.0
 
 * added `xdesktop` field into [ScreenSizes]
+
+## 1.4.0
+
+* added `screenWidth` and `screenHeight` field into [BuildContext] extension

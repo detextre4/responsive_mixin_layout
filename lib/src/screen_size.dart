@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const _missingContextText = "Must to provide context to use this feature";
+
 // * Responsive sizes
 /// A list of sizes from device screen resolution
 class ScreenSizes extends StatelessWidget {
@@ -31,9 +33,25 @@ class ScreenWidth {
   });
 
   final BuildContext? context;
+
+  /// The data from the closest instance of this class that encloses the given
+  /// context.
+  ///
+  /// You can use this function to query the size and orientation of the screen,
+  /// as well as other media parameters (see [MediaQueryData] for more
+  /// examples). When that information changes, your widget will be scheduled to
+  /// be rebuilt, keeping your widget up-to-date.
+  ///
+  /// If the widget only requires a subset of properties of the [MediaQueryData]
   MediaQueryData get media {
-    assert(context != null, "Must to provide context to use this feature");
+    assert(context != null, _missingContextText);
     return MediaQuery.of(context!);
+  }
+
+  /// The horizontal extent of this size.
+  double get screenWidth {
+    assert(context != null, _missingContextText);
+    return MediaQuery.of(context!).size.width;
   }
 
   /// represent 400 viewport width
@@ -102,9 +120,25 @@ class ScreenHeight {
   });
 
   final BuildContext? context;
+
+  /// The data from the closest instance of this class that encloses the given
+  /// context.
+  ///
+  /// You can use this function to query the size and orientation of the screen,
+  /// as well as other media parameters (see [MediaQueryData] for more
+  /// examples). When that information changes, your widget will be scheduled to
+  /// be rebuilt, keeping your widget up-to-date.
+  ///
+  /// If the widget only requires a subset of properties of the [MediaQueryData]
   MediaQueryData get media {
-    assert(context != null, "Must to provide context to use this feature");
+    assert(context != null, _missingContextText);
     return MediaQuery.of(context!);
+  }
+
+  /// The vertical extent of this size.
+  double get screenHeight {
+    assert(context != null, _missingContextText);
+    return MediaQuery.of(context!).size.height;
   }
 
   /// represent 400 viewport height
