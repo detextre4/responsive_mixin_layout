@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-const _missingContextText = "Must to provide context to use this feature";
+import 'package:responsive_mixin_layout/src/utils.dart';
 
 // * Responsive sizes
 /// A list of sizes from device screen resolution
@@ -44,13 +43,13 @@ class ScreenWidth {
   ///
   /// If the widget only requires a subset of properties of the [MediaQueryData]
   MediaQueryData get media {
-    assert(context != null, _missingContextText);
+    assert(context != null, Utils.missingContextText);
     return MediaQuery.of(context!);
   }
 
   /// The horizontal extent of this size.
   double get screenWidth {
-    assert(context != null, _missingContextText);
+    assert(context != null, Utils.missingContextText);
     return MediaQuery.of(context!).size.width;
   }
 
@@ -131,13 +130,13 @@ class ScreenHeight {
   ///
   /// If the widget only requires a subset of properties of the [MediaQueryData]
   MediaQueryData get media {
-    assert(context != null, _missingContextText);
+    assert(context != null, Utils.missingContextText);
     return MediaQuery.of(context!);
   }
 
   /// The vertical extent of this size.
   double get screenHeight {
-    assert(context != null, _missingContextText);
+    assert(context != null, Utils.missingContextText);
     return MediaQuery.of(context!).size.height;
   }
 

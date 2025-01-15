@@ -1,16 +1,29 @@
 import 'package:flutter/widgets.dart';
 import 'package:responsive_mixin_layout/src/screen_size.dart';
+import 'package:responsive_mixin_layout/src/utils.dart';
 
-ScreenSizes _screenSizes(BuildContext context) {
-  final screenSizes = context.findAncestorWidgetOfExactType<ScreenSizes>();
-  if (screenSizes == null) {
-    throw 'ResponsiveLayout must have an ancestor of type ScreenSizes';
-  }
-
-  return screenSizes;
-}
-
-/// Custom responsive layout widget
+/// A custom responsive layout widget that renders different views based on [ScreenSizes].
+///
+/// This widget uses a [LayoutBuilder] to determine the width of the screen or layout box
+/// constraints and renders the appropriate view for mobile, tablet, xdesktop, desktop, or tv
+/// based on the provided functions.
+///
+/// Example usage:
+///
+/// ```dart
+/// ResponsiveLayout(
+///   mobile: (context, constraints) => MobileView(),
+///   tablet: (context, constraints) => TabletView(),
+///   desktop: (context, constraints) => DesktopView(),
+/// )
+/// ```
+///
+/// @param mobile The function to build the mobile view.
+/// @param tablet The function to build the tablet view.
+/// @param xdesktop The function to build the xdesktop view.
+/// @param desktop The function to build the desktop view.
+/// @param tv The function to build the tv view.
+/// @param basedOnLayout A boolean to switch between getting screen size from screen size or layout box constraints.
 class ResponsiveLayout extends StatelessWidget {
   const ResponsiveLayout({
     super.key,
@@ -31,12 +44,12 @@ class ResponsiveLayout extends StatelessWidget {
       desktop;
   final Widget? Function(BuildContext context, BoxConstraints constraints)? tv;
 
-  /// This bool is used to switch between get screen size from screen size or layout box constraints
+  /// This bool is used to switch between getting screen size from screen size or layout box constraints.
   final bool basedOnLayout;
 
   @override
   Widget build(BuildContext context) {
-    final screenSizes = _screenSizes(context);
+    final screenSizes = Utils.screenSizes(context);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -62,7 +75,30 @@ class ResponsiveLayout extends StatelessWidget {
   }
 }
 
-/// Custom responsive layout mixin
+/// A mixin that provides responsive layout capabilities for a widget.
+///
+/// This mixin allows a widget to define different layouts for mobile, tablet, xdesktop, desktop,
+/// and tv screen sizes. It uses a [LayoutBuilder] to determine the width of the layout box
+/// constraints and renders the appropriate layout based on the provided functions.
+///
+/// Example usage:
+///
+/// ```dart
+/// class MyResponsiveWidget extends StatelessWidget with ResponsiveMixinLayout {
+///   @override
+///   Widget? mobileLayout(BuildContext context, BoxConstraints constraints) => MobileView();
+///   @override
+///   Widget? tabletLayout(BuildContext context, BoxConstraints constraints) => TabletView();
+///   @override
+///   Widget? desktopLayout(BuildContext context, BoxConstraints constraints) => DesktopView();
+/// }
+/// ```
+///
+/// @param mobileLayout The function to build the mobile layout.
+/// @param tabletLayout The function to build the tablet layout.
+/// @param xdesktopLayout The function to build the xdesktop layout.
+/// @param desktopLayout The function to build the desktop layout.
+/// @param tvLayout The function to build the tv layout.
 mixin ResponsiveMixinLayout<T extends Widget> on Widget {
   Widget? mobileLayout(BuildContext context, BoxConstraints constraints) =>
       null;
@@ -75,7 +111,7 @@ mixin ResponsiveMixinLayout<T extends Widget> on Widget {
   Widget? tvLayout(BuildContext context, BoxConstraints constraints) => null;
 
   Widget buildResponsiveLayout(BuildContext context) {
-    final screenSizes = _screenSizes(context);
+    final screenSizes = Utils.screenSizes(context);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -100,7 +136,36 @@ mixin ResponsiveMixinLayout<T extends Widget> on Widget {
   Widget build(BuildContext context) => buildResponsiveLayout(context);
 }
 
-/// Custom responsive layout mixin to `StatefullWidget`
+/// A mixin that provides responsive layout capabilities for a `StatefulWidget`.
+///
+/// This mixin allows a `StatefulWidget` to define different layouts for mobile, tablet, xdesktop,
+/// desktop, and tv screen sizes. It uses a [LayoutBuilder] to determine the width of the layout
+/// box constraints and renders the appropriate layout based on the provided functions.
+///
+/// Example usage:
+///
+/// ```dart
+/// class MyResponsiveStatefulWidget extends StatefulWidget {
+///   @override
+///   _MyResponsiveStatefulWidgetState createState() => _MyResponsiveStatefulWidgetState();
+/// }
+///
+/// class _MyResponsiveStatefulWidgetState extends State<MyResponsiveStatefulWidget>
+///     with ResponsiveMixinLayoutStateful {
+///   @override
+///   Widget? mobileLayout(BuildContext context, BoxConstraints constraints) => MobileView();
+///   @override
+///   Widget? tabletLayout(BuildContext context, BoxConstraints constraints) => TabletView();
+///   @override
+///   Widget? desktopLayout(BuildContext context, BoxConstraints constraints) => DesktopView();
+/// }
+/// ```
+///
+/// @param mobileLayout The function to build the mobile layout.
+/// @param tabletLayout The function to build the tablet layout.
+/// @param xdesktopLayout The function to build the xdesktop layout.
+/// @param desktopLayout The function to build the desktop layout.
+/// @param tvLayout The function to build the tv layout.
 mixin ResponsiveMixinLayoutStateful<T extends StatefulWidget> on State<T> {
   Widget? mobileLayout(BuildContext context, BoxConstraints constraints) =>
       null;
@@ -113,7 +178,7 @@ mixin ResponsiveMixinLayoutStateful<T extends StatefulWidget> on State<T> {
   Widget? tvLayout(BuildContext context, BoxConstraints constraints) => null;
 
   Widget buildResponsiveLayout(BuildContext context) {
-    final screenSizes = _screenSizes(context);
+    final screenSizes = Utils.screenSizes(context);
 
     return LayoutBuilder(
       builder: (context, constraints) {

@@ -109,9 +109,121 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+## RenderBoxBuilder
+A widget that provides access to the RenderBox of its child widget and triggers a callback.
+
+### Example usage:
+
+```dart
+RenderBoxBuilder(
+  child: YourWidget(),
+  onRenderBox: (context, renderBox) {
+    // Handle the RenderBox
+    print('RenderBox size: ${renderBox.size}');
+  },
+)
+```
+
+## BoxSizeListener
+A widget that listens for size changes of its child widget and triggers a callback.
+
+### Example usage:
+
+```dart
+BoxSizeListener(
+  child: YourWidget(),
+  onSizeChanged: () {
+    // Handle size change
+    print('Size changed');
+  },
+)
+```
+
+## ScreenSizeListener
+A widget that listens for screen size changes and triggers a callback.
+
+### Example usage:
+
+```dart
+ScreenSizeListener(
+  child: YourWidget(),
+  onSizeChanged: (newSize) {
+    // Handle screen size change
+    print('Screen size changed: $newSize');
+  },
+)
+```
+
+## TextScalerBuilder
+A widget that provides a custom text scaling factor based on the screen size.
+
+### Example usage:
+
+```dart
+TextScalerBuilder(
+  child: YourWidget(),
+  scaler: (context, media) {
+    // Calculate the scaling factor based on the screen size
+    return media.size.width / 400.0;
+  },
+)
+```
+
+## DoubleExtension
+An extension for the `double` class that provides additional utility methods.
+
+### Methods:
+* clampInverted(double lowerLimit, double upperLimit): Returns this double clamped to be in the range [lowerLimit]-[upperLimit] but inverted.
+
+* clampMapRanged({bool invert = false, required double minRange, required double maxRange, required double minValue, required double maxValue}): Maps the value from one range to another and optionally inverts the result.
+
+### Example usage:
+
+```dart
+extension DoubleExtension on double {
+  // Returns this [num] clamped to be in the range [lowerLimit]-[upperLimit] but inverted.
+  double clampInverted(double lowerLimit, double upperLimit) =>
+      lowerLimit + upperLimit - clamp(lowerLimit, upperLimit);
+
+  // Map the value from one range to another
+  double clampMapRanged({
+    bool invert = false,
+    required double minRange,
+    required double maxRange,
+    required double minValue,
+    required double maxValue,
+  }) {
+    double mappedValue =
+        ((this - minRange) / (maxRange - minRange)) * (maxValue - minValue) +
+            minValue;
+
+    // Make sure the mapped value is within the minValue and maxValue ranges
+    mappedValue = mappedValue.clamp(minValue, maxValue);
+
+    // Inverts return values if invert is specified as true
+    return invert ? maxValue + minValue - mappedValue : mappedValue;
+  }
+}
+
+// Example usage
+void main() {
+  double value = 5.0;
+  double clampedInverted = value.clampInverted(1.0, 10.0);
+  double mappedValue = value.clampMapRanged(
+    minRange: 0.0,
+    maxRange: 10.0,
+    minValue: 100.0,
+    maxValue: 200.0,
+  );
+
+  print('Clamped Inverted: $clampedInverted');
+  print('Mapped Value: $mappedValue');
+}
+```
+
 ## Contribution
 
-Contributions are welcome. If you find any issues or have any suggestions for improvement, you can open an [issue](https://github.com/your_username/your_package/issues) or submit a [pull request](https://github.com/your_username/your_package/pulls) on the GitHub repository. 
+Contributions are welcome. If you find any issues or have any suggestions for improvement, you can open an [issue](https://github.com/your_username/your_package/issues) or submit a [pull request](https://github.com/your_username/your_package/pulls) on the GitHub repository.
  
 ## Support
 
