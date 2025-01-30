@@ -73,3 +73,9 @@ All notable changes to this project will be documented in this file.
 ## 1.6.2
 
 * Fixed [RenderRandomValue] widgets import.
+
+## 1.6.3
+
+* Added [basedOnLayout] bool getter into [ResponsiveMixinLayout] and [ResponsiveMixinLayoutStateful] mixins.
+
+* Added [xmobile] field to use in all ResponsiveLayout methods

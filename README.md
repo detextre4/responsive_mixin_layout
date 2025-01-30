@@ -39,8 +39,11 @@ ScreenSizes(
 Here is a basic example of how to use the Flutter Responsive Mixin Layout package:
 
 ```dart
-class HomePage extends StatelessWidget with ResponsiveLayoutMixin {
+class HomePage extends StatelessWidget with ResponsiveMixinLayout {
   const HomePage({super.key});
+
+  @override
+  bool get basedOnLayout => true;
 
   @override
   Widget? desktopLayout(BuildContext context, BoxConstraints constraints) {

@@ -27,6 +27,7 @@ import 'package:responsive_mixin_layout/src/utils.dart';
 class ResponsiveLayout extends StatelessWidget {
   const ResponsiveLayout({
     super.key,
+    this.xmobile,
     this.mobile,
     this.tablet,
     this.xdesktop,
@@ -34,6 +35,8 @@ class ResponsiveLayout extends StatelessWidget {
     this.tv,
     this.basedOnLayout = false,
   });
+  final Widget? Function(BuildContext context, BoxConstraints constraints)?
+      xmobile;
   final Widget? Function(BuildContext context, BoxConstraints constraints)?
       mobile;
   final Widget? Function(BuildContext context, BoxConstraints constraints)?
@@ -57,7 +60,9 @@ class ResponsiveLayout extends StatelessWidget {
             ? constraints.maxWidth
             : MediaQuery.of(context).size.width;
 
-        if (mobile != null && width < screenSizes.width.mobile) {
+        if (xmobile != null && width < screenSizes.width.xmobile) {
+          return xmobile!(context, constraints) ?? const Placeholder();
+        } else if (mobile != null && width < screenSizes.width.mobile) {
           return mobile!(context, constraints) ?? const Placeholder();
         } else if (tablet != null && width < screenSizes.width.tablet) {
           return tablet!(context, constraints) ?? const Placeholder();
@@ -94,12 +99,18 @@ class ResponsiveLayout extends StatelessWidget {
 /// }
 /// ```
 ///
+/// @param xmobileLayout The function to build the xmobile layout.
 /// @param mobileLayout The function to build the mobile layout.
 /// @param tabletLayout The function to build the tablet layout.
 /// @param xdesktopLayout The function to build the xdesktop layout.
 /// @param desktopLayout The function to build the desktop layout.
 /// @param tvLayout The function to build the tv layout.
 mixin ResponsiveMixinLayout<T extends Widget> on Widget {
+  /// This bool is used to switch between getting screen size from screen size or layout box constraints.
+  bool get basedOnLayout => false;
+
+  Widget? xmobileLayout(BuildContext context, BoxConstraints constraints) =>
+      null;
   Widget? mobileLayout(BuildContext context, BoxConstraints constraints) =>
       null;
   Widget? tabletLayout(BuildContext context, BoxConstraints constraints) =>
@@ -115,17 +126,24 @@ mixin ResponsiveMixinLayout<T extends Widget> on Widget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (mobileLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.width.mobile) {
+        final width = basedOnLayout
+            ? constraints.maxWidth
+            : MediaQuery.of(context).size.width;
+
+        if (xmobileLayout(context, constraints) != null &&
+            width < screenSizes.width.xmobile) {
+          return mobileLayout(context, constraints) ?? const Placeholder();
+        } else if (mobileLayout(context, constraints) != null &&
+            width < screenSizes.width.mobile) {
           return mobileLayout(context, constraints) ?? const Placeholder();
         } else if (tabletLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.width.tablet) {
+            width < screenSizes.width.tablet) {
           return tabletLayout(context, constraints) ?? const Placeholder();
         } else if (xdesktopLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.width.xdesktop) {
+            width < screenSizes.width.xdesktop) {
           return desktopLayout(context, constraints) ?? const Placeholder();
         } else if (desktopLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.width.desktop) {
+            width < screenSizes.width.desktop) {
           return desktopLayout(context, constraints) ?? const Placeholder();
         }
         return tvLayout(context, constraints) ?? const Placeholder();
@@ -161,12 +179,18 @@ mixin ResponsiveMixinLayout<T extends Widget> on Widget {
 /// }
 /// ```
 ///
+/// @param xmobileLayout The function to build the xmobile layout.
 /// @param mobileLayout The function to build the mobile layout.
 /// @param tabletLayout The function to build the tablet layout.
 /// @param xdesktopLayout The function to build the xdesktop layout.
 /// @param desktopLayout The function to build the desktop layout.
 /// @param tvLayout The function to build the tv layout.
 mixin ResponsiveMixinLayoutStateful<T extends StatefulWidget> on State<T> {
+  /// This bool is used to switch between getting screen size from screen size or layout box constraints.
+  bool get basedOnLayout => false;
+
+  Widget? xmobileLayout(BuildContext context, BoxConstraints constraints) =>
+      null;
   Widget? mobileLayout(BuildContext context, BoxConstraints constraints) =>
       null;
   Widget? tabletLayout(BuildContext context, BoxConstraints constraints) =>
@@ -182,17 +206,24 @@ mixin ResponsiveMixinLayoutStateful<T extends StatefulWidget> on State<T> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (mobileLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.width.mobile) {
+        final width = basedOnLayout
+            ? constraints.maxWidth
+            : MediaQuery.of(context).size.width;
+
+        if (xmobileLayout(context, constraints) != null &&
+            width < screenSizes.width.xmobile) {
+          return mobileLayout(context, constraints) ?? const Placeholder();
+        } else if (mobileLayout(context, constraints) != null &&
+            width < screenSizes.width.mobile) {
           return mobileLayout(context, constraints) ?? const Placeholder();
         } else if (tabletLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.width.tablet) {
+            width < screenSizes.width.tablet) {
           return tabletLayout(context, constraints) ?? const Placeholder();
         } else if (xdesktopLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.width.xdesktop) {
+            width < screenSizes.width.xdesktop) {
           return desktopLayout(context, constraints) ?? const Placeholder();
         } else if (desktopLayout(context, constraints) != null &&
-            constraints.maxWidth < screenSizes.width.desktop) {
+            width < screenSizes.width.desktop) {
           return desktopLayout(context, constraints) ?? const Placeholder();
         }
         return tvLayout(context, constraints) ?? const Placeholder();
