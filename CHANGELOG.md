@@ -79,3 +79,7 @@ All notable changes to this project will be documented in this file.
 * Added [basedOnLayout] bool getter into [ResponsiveMixinLayout] and [ResponsiveMixinLayoutStateful] mixins.
 
 * Added [xmobile] field to use in all ResponsiveLayout methods
+
+## 1.6.4
+
+* Fix scaler parameters from [TextScalerBuilder].

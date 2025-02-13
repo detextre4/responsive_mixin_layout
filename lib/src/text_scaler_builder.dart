@@ -26,16 +26,14 @@ class TextScalerBuilder extends StatelessWidget {
     required this.child,
     required this.scaler,
   });
-  final double Function(BuildContext context, MediaQueryData media) scaler;
+  final double Function(BuildContext context) scaler;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final data = MediaQuery.of(context);
-
     return MediaQuery(
-      data: data.copyWith(
-        textScaler: TextScaler.linear(scaler(context, data)),
+      data: MediaQuery.of(context).copyWith(
+        textScaler: TextScaler.linear(scaler(context)),
       ),
       child: child,
     );

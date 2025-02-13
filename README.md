@@ -165,9 +165,9 @@ A widget that provides a custom text scaling factor based on the screen size.
 ```dart
 TextScalerBuilder(
   child: YourWidget(),
-  scaler: (context, media) {
+  scaler: (context) {
     // Calculate the scaling factor based on the screen size
-    return media.size.width / 400.0;
+    return context.width.screenWidth / 400.0;
   },
 )
 ```
